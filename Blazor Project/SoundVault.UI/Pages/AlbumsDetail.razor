@@ -1,0 +1,120 @@
+﻿@page "/AlbumsDetail"
+@page "/AlbumsDetail/{id:int}"
+
+@inject AlbumService AlbumService
+@inject GenderService GenderService
+@inject NavigationManager NavigationManager
+
+<h3 class="text-center mb-4 text-info">Update</h3>
+
+<div class="modal" tabindex="-1" style="display:block" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-center mb-4 text-info">Album's Detail (Update)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Exit">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@album" OnValidSubmit="Update">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered table-light">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th style="width: 25%;">Title</th>
+                                    <td>
+                                        <input type="text" @bind="@album.Title" class="form-control form-control-sm" placeholder="Enter Title name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 25%;">Gender</th>
+                                    <td>
+                                        <!--<input type="number" @bind="@album.GenderId" class="form-control form-control-sm" placeholder="Enter GenderId" />-->
+                                        <select class="form-control form-control-sm" style="width:95%" @bind="album.GenderId">
+                                            <option value="">Select a gender</option>  <!-- Default option -->
+                                            @foreach (var gender in genders)
+                                            {
+                                                <option value="@gender.Id">@gender.Name</option>
+                                            }
+                                        </select>
+                                    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 25%;">Song Count</th>
+                                    <td>
+                                        <input type="number" @bind="@album.SongCount" class="form-control form-control-sm" placeholder="Enter Song Count" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width: 25%;">Total Duration</th>
+                                    <td>
+                                        <input type="text" @bind="@album.TotalDuration" class="form-control form-control-sm" placeholder="Enter Total Duration" />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered table-light">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <input type="submit" value="Save" class="btn btn-sm btn-success" />
+                                        <input type="button" value="Cancel" class="btn btn-sm btn-danger" @onclick="Exit" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public string Message { get; set; }
+    private Album album = new Album();
+    protected IEnumerable<Gender> genders { get; set; } = new List<Gender>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (Id != 0)
+            {
+                album = await AlbumService.GetById(Id);
+                genders = await GenderService.GetAll();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Message = "Error loading album.";
+        }
+    }
+
+    protected void Exit()
+    {
+        NavigationManager.NavigateTo("/AlbumsCatalogue");
+    }
+
+    protected async Task Update()
+    {
+        try
+        {
+            await AlbumService.Save(album);
+            NavigationManager.NavigateTo("/AlbumsCatalogue");
+        }
+        catch (Exception ex)
+        {
+            Message = $"Error updating album: {ex.Message}";
+        }
+    }
+}

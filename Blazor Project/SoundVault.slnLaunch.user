@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SoundVault.UI\\SoundVault.UI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SoundVault.API\\SoundVault.API.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,107 @@
+﻿@page "/MusicalsGenderDetails"
+@page "/MusicalsGenderDetails/{id:int}"
+@inject GenderService GenderService
+@inject NavigationManager NavigationManager
+
+<h3 class="text-center mb-4 text-info">Update Gender</h3>
+
+@if (gender == null)
+{
+    <h4 class="text-center text-warning">Loading...</h4>
+}
+else
+{
+    <div class="modal" tabindex="-1" style="display:block" role="dialog">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-center mb-4 text-info">Genre's Detail (Update)</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Exit">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="@gender" OnValidSubmit="Update">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered table-light">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th style="width: 25%;">Name</th>
+                                        <th style="width: 75%;">
+                                            <input type="text" @bind="@gender.Name" class="form-control form-control-sm" placeholder="Enter genre name" />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" class="text-center">
+                                            <input type="submit" value="Save" class="btn btn-sm btn-success" />
+                                            <input type="button" value="Cancel" class="btn btn-sm btn-danger" @onclick="Exit" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Message
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    Gender gender = new Gender();
+    public string Message { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            if (Id > 0)
+            {
+                gender = await GenderService.GetById(Id);
+            }
+        }
+        catch (Exception ex)
+        {
+            Message = ex.Message;
+        }
+    }
+
+    protected async Task Update()
+    {
+        try
+        {
+            await GenderService.Save(gender);
+            NavigateToGenders();
+        }
+        catch (Exception ex)
+        {
+            Message = ex.Message;
+        }
+    }
+
+    protected void NavigateToGenders()
+    {
+        NavigationManager.NavigateTo("/MusicalsGender");
+    }
+
+    protected void Exit()
+    {
+        NavigateToGenders();
+    }
+}

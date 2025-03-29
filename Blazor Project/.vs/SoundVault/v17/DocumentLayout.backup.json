@@ -1,0 +1,181 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\proyectos\\Blazor\\SoundVault\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|d:\\proyectos\\blazor\\soundvault\\soundvault.ui\\components\\piechart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|solutionrelative:soundvault.ui\\components\\piechart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|d:\\proyectos\\blazor\\soundvault\\soundvault.ui\\shared\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|solutionrelative:soundvault.ui\\shared\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|d:\\proyectos\\blazor\\soundvault\\soundvault.ui\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|solutionrelative:soundvault.ui\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|d:\\proyectos\\blazor\\soundvault\\soundvault.ui\\pages\\albumsdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|solutionrelative:soundvault.ui\\pages\\albumsdetail.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|d:\\proyectos\\blazor\\soundvault\\soundvault.ui\\pages\\musicalsgenderdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|solutionrelative:soundvault.ui\\pages\\musicalsgenderdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|d:\\proyectos\\blazor\\soundvault\\soundvault.ui\\pages\\albumscatalogue.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|solutionrelative:soundvault.ui\\pages\\albumscatalogue.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|d:\\proyectos\\blazor\\soundvault\\soundvault.ui\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2220F96-3A56-446E-A769-15D78FE3D495}|SoundVault.UI\\SoundVault.UI.csproj|solutionrelative:soundvault.ui\\shared\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MusicalsGenderDetails.razor",
+              "DocumentMoniker": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\MusicalsGenderDetails.razor",
+              "RelativeDocumentMoniker": "SoundVault.UI\\Pages\\MusicalsGenderDetails.razor",
+              "ToolTip": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\MusicalsGenderDetails.razor",
+              "RelativeToolTip": "SoundVault.UI\\Pages\\MusicalsGenderDetails.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T22:54:49.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AlbumsCatalogue.razor",
+              "DocumentMoniker": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\AlbumsCatalogue.razor",
+              "RelativeDocumentMoniker": "SoundVault.UI\\Pages\\AlbumsCatalogue.razor",
+              "ToolTip": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\AlbumsCatalogue.razor",
+              "RelativeToolTip": "SoundVault.UI\\Pages\\AlbumsCatalogue.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T22:53:48.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AlbumsDetail.razor",
+              "DocumentMoniker": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\AlbumsDetail.razor",
+              "RelativeDocumentMoniker": "SoundVault.UI\\Pages\\AlbumsDetail.razor",
+              "ToolTip": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\AlbumsDetail.razor",
+              "RelativeToolTip": "SoundVault.UI\\Pages\\AlbumsDetail.razor",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACAAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T22:53:21.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.razor",
+              "DocumentMoniker": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "SoundVault.UI\\Pages\\Index.razor",
+              "ToolTip": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Pages\\Index.razor",
+              "RelativeToolTip": "SoundVault.UI\\Pages\\Index.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T22:51:50.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PieChart.razor",
+              "DocumentMoniker": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Components\\PieChart.razor",
+              "RelativeDocumentMoniker": "SoundVault.UI\\Components\\PieChart.razor",
+              "ToolTip": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Components\\PieChart.razor",
+              "RelativeToolTip": "SoundVault.UI\\Components\\PieChart.razor",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T22:49:40.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainLayout.razor.css",
+              "DocumentMoniker": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Shared\\MainLayout.razor.css",
+              "RelativeDocumentMoniker": "SoundVault.UI\\Shared\\MainLayout.razor.css",
+              "ToolTip": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Shared\\MainLayout.razor.css",
+              "RelativeToolTip": "SoundVault.UI\\Shared\\MainLayout.razor.css",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-29T22:23:04.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Shared\\NavMenu.razor",
+              "RelativeDocumentMoniker": "SoundVault.UI\\Shared\\NavMenu.razor",
+              "ToolTip": "D:\\proyectos\\Blazor\\SoundVault\\SoundVault.UI\\Shared\\NavMenu.razor",
+              "RelativeToolTip": "SoundVault.UI\\Shared\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-29T14:49:06.577Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 13,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

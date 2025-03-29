@@ -1,0 +1,96 @@
+﻿@inject IAlbumService AlbumService
+
+@if (albums == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="chart-container">
+        <ChartJsPieChart @ref="_pieChartJs" Config="@_config" Width="400" Height="300"></ChartJsPieChart>
+    </div>
+}
+
+@code {
+    public IEnumerable<Album> albums { get; set; }
+    public string Message { get; set; }
+
+    private PieConfig _config;
+    private ChartJsPieChart _pieChartJs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            albums = await AlbumService.GetAll();
+        }
+        catch (Exception e)
+        {
+            Message = "Something went wrong..." + e.Message;
+        }
+
+        _config = new PieConfig
+            {
+                Options = new PieOptions
+                {
+                    Title = new OptionsTitle
+                    {
+                        Display = true,
+                        Text = "Albums"
+                    },
+                    Responsive = true,
+                    Animation = new ArcAnimation
+                    {
+                        AnimateRotate = true,
+                        AnimateScale = true
+                    }
+                }
+            };
+
+        // Aquí obtenemos los nombres de los géneros
+        var genreNames = albums.Select(c => c.Gender.Name).Distinct().ToArray();
+        _config.Data.Labels.AddRange(genreNames);
+
+        var piSet = new PieDataset
+            {
+                BackgroundColor = new[] {
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#B39DDB")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#1E88E5")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#3F51B5")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#FF5722")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#9C27B0")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#FFC107")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#8BC34A")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#FFEB3B")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#9E9E9E")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#424242")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#607D8B")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#8E24AA")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#212121")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#00BCD4")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#FF4081")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#4CAF50")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#FF9800")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#1976D2")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#D32F2F")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#F44336")),
+                    ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#E64A19"))
+            },
+                BorderWidth = 0,
+                HoverBackgroundColor = ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#d7c3a2")),
+                HoverBorderColor = ColorUtil.FromDrawingColor(System.Drawing.ColorTranslator.FromHtml("#c6c6c6")),
+                HoverBorderWidth = 1,
+                BorderColor = "#ffffff"
+            };
+
+        // Aquí contamos cuántos álbumes hay para cada género y convertimos los resultados a double
+        var genreCounts = albums.GroupBy(e => e.Gender.Name)
+            .Select(group => (double)group.Count())  // Convertir a double
+            .ToArray();
+
+        // Asignamos los datos convertidos al gráfico
+        piSet.Data.AddRange(genreCounts);
+
+        _config.Data.Datasets.Add(piSet);
+    }
+}
