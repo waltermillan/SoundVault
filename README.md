@@ -9,10 +9,13 @@ Connect to SQL Server, using Dapper.
 ## Features
 
 BACKEND:
+- C#
+- NET Core 9.0.0 (VS Community 2022)
+- Dapper
 - Design Patterns: Base entity patern desing/DTO.
 
 FRONTEND:
-- Developed with NET Core 9.0.2
+- Developed with NET Core 9.0.0
 - Blazor Server vWeb Side
 - Using ChartJS (popular JavaScript library to create a PieChart)
 - HTML / CSS / Bootstrap
