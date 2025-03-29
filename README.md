@@ -15,6 +15,7 @@ FRONTEND:
 - Developed with NET Core 9.0.2
 - Blazor Server vWeb Side
 - Using ChartJS (popular JavaScript library to create a PieChart)
+- HTML / CSS / Bootstrap
 
 DB
 - Written in SQL Server
