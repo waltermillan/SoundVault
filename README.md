@@ -28,4 +28,5 @@ DB
 
 1. Clone the repository:
 
-git clone https://github.com/waltermillan/SoundValut.git
+git clone https://github.com/waltermillan/SoundValut.git 
+YouTube: https://youtu.be/-zpIfxQH9XE
