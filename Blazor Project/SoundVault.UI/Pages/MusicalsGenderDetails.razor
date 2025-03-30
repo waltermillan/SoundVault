@@ -5,7 +5,7 @@
 
 <h3 class="text-center mb-4 text-info">Update Gender</h3>
 
-@if (gender == null)
+@if (gender is null)
 {
     <h4 class="text-center text-warning">Loading...</h4>
 }
@@ -72,9 +72,7 @@ else
         try
         {
             if (Id > 0)
-            {
                 gender = await GenderService.GetById(Id);
-            }
         }
         catch (Exception ex)
         {

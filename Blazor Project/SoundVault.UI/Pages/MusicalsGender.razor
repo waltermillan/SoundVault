@@ -5,7 +5,7 @@
 
 <h3 class="text-center mb-4 text-info">Musical's Gender</h3>
 
-@if (genders == null || !genders.Any())
+@if (genders is null || !genders.Any())
 {
     <h4 class="text-center text-warning">Loading...</h4>
 }
@@ -69,6 +69,7 @@ else
             </table>
         </div>
     </EditForm>
+
     @if (!string.IsNullOrEmpty(Message))
     {
         <div class="alert alert-danger mt-4" role="alert">
@@ -89,9 +90,9 @@ else
         {
             genders = await GenderService.GetAll();
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Message = ex.Message;
+            Message = e.Message;
         }
     }
 
@@ -109,9 +110,9 @@ else
             genders = await GenderService.GetAll();
             gender = new Gender();
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Message = ex.Message;
+            Message = e.Message;
         }
     }
 
@@ -122,9 +123,9 @@ else
             await GenderService.Delete(id);
             genders = await GenderService.GetAll();
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Message = ex.Message;
+            Message = e.Message;
         }
     }
 

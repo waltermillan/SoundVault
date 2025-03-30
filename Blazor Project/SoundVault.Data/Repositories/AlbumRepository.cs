@@ -26,9 +26,9 @@ namespace SoundVault.Data.Repositories
         public async Task<bool> Add(Album album)
         {
             var db = DbConnection();
-            var sql = @"INSERT INTO Albums (title, gender_id, song_count, total_duration) 
-                        VALUES (@Title, @GenderId, @SongCount, @TotalDuration)";
-            var result = await db.ExecuteAsync(sql, new { album.Title, album.GenderId, album.SongCount, album.TotalDuration });
+            var sql = @"INSERT INTO Albums (title, gender_id, song_count, total_duration, cover) 
+                        VALUES (@Title, @GenderId, @SongCount, @TotalDuration, @Cover)";
+            var result = await db.ExecuteAsync(sql, new { album.Title, album.GenderId, album.SongCount, album.TotalDuration, album.Cover });
             return result > 0;
         }
 
@@ -44,7 +44,7 @@ namespace SoundVault.Data.Repositories
         public async Task<Album> GetById(int id)
         {
             var db = DbConnection();
-            var sql = @"SELECT id, title, gender_id AS GenderId, song_count AS SongCount, total_duration AS TotalDuration
+            var sql = @"SELECT id, title, gender_id AS GenderId, song_count AS SongCount, total_duration AS TotalDuration, cover
                         FROM Albums
                         WHERE Id = @Id";
             return await db.QueryFirstOrDefaultAsync<Album>(sql, new { Id = id });
@@ -53,7 +53,7 @@ namespace SoundVault.Data.Repositories
         public async Task<IEnumerable<Album>> GetAll()
         {
             var db = DbConnection();
-            var sqlCommand = @"SELECT A.id, title, song_count AS SongCount, total_duration AS TotalDuration, G.Id, G.Name
+            var sqlCommand = @"SELECT A.id, title, song_count AS SongCount, total_duration AS TotalDuration, cover, G.Id, G.Name
                        FROM Albums A
                        INNER JOIN Genders G on A.gender_id = G.Id";
 
@@ -74,9 +74,9 @@ namespace SoundVault.Data.Repositories
         {
             var db = DbConnection();
             var sql = @"UPDATE Albums 
-                        SET title = @Title, gender_id = @GenderId, song_count = @SongCount, total_duration = @TotalDuration
+                        SET title = @Title, gender_id = @GenderId, song_count = @SongCount, total_duration = @TotalDuration, cover = @Cover
                         WHERE id = @Id";
-            var result = await db.ExecuteAsync(sql, new { album.Id, album.Title, album.GenderId, album.SongCount, album.TotalDuration });
+            var result = await db.ExecuteAsync(sql, new { album.Id, album.Title, album.GenderId, album.SongCount, album.TotalDuration, album.Cover });
             return result > 0;
         }
     }

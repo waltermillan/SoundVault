@@ -31,7 +31,7 @@ namespace SoundVault.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Post([FromBody] Gender gender)
         {
-            if (gender == null)
+            if (gender is null)
                 return BadRequest();
 
             if(gender.Name.Trim() == string.Empty)
@@ -49,7 +49,7 @@ namespace SoundVault.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Put([FromBody] Gender gender)
         {
-            if (gender == null)
+            if (gender is null)
                 return BadRequest();
 
             if (gender.Name.Trim() == string.Empty)

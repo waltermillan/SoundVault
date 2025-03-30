@@ -27,5 +27,7 @@ namespace SoundVault.Model.Entities
         [Required(AllowEmptyStrings = false, ErrorMessage = "Album's Total Duration is required")]
         public string TotalDuration { get; set; }
 
+        [Column("cover")]
+        public string? Cover { get; set; }
     }
 }

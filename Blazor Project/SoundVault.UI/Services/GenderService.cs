@@ -30,14 +30,15 @@ namespace SoundVault.UI.Services
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Gender>>(
                   await _httpClient.GetStreamAsync("api/Genders"),
-            new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) ?? Enumerable.Empty<Gender>();
         }
 
         public async Task<Gender> GetById(int id)
         {
+            var jsonResult = await _httpClient.GetStreamAsync($"api/Genders/{id}");
             return await JsonSerializer.DeserializeAsync<Gender>(
-                await _httpClient.GetStreamAsync($"api/Genders/{id}"),
-                new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                jsonResult,
+                new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) ?? new Gender();
         }
 
         public async Task Save(Gender genders)

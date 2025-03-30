@@ -1,6 +1,6 @@
 ﻿@inject IAlbumService AlbumService
 
-@if (albums == null)
+@if (albums is null)
 {
     <p><em>Loading...</em></p>
 }
@@ -35,8 +35,7 @@ else
                 {
                     Title = new OptionsTitle
                     {
-                        Display = true,
-                        Text = "Albums"
+                        Display = true
                     },
                     Responsive = true,
                     Animation = new ArcAnimation
@@ -47,7 +46,7 @@ else
                 }
             };
 
-        // Aquí obtenemos los nombres de los géneros
+        // Get gender's name
         var genreNames = albums.Select(c => c.Gender.Name).Distinct().ToArray();
         _config.Data.Labels.AddRange(genreNames);
 
@@ -83,12 +82,11 @@ else
                 BorderColor = "#ffffff"
             };
 
-        // Aquí contamos cuántos álbumes hay para cada género y convertimos los resultados a double
+        // Here we count how many albums there are for each gender and convert the results into doubles.
         var genreCounts = albums.GroupBy(e => e.Gender.Name)
-            .Select(group => (double)group.Count())  // Convertir a double
+            .Select(group => (double)group.Count())
             .ToArray();
 
-        // Asignamos los datos convertidos al gráfico
         piSet.Data.AddRange(genreCounts);
 
         _config.Data.Datasets.Add(piSet);

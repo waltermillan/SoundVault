@@ -35,14 +35,25 @@ public class AlbumService : IAlbumService
             options: new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) ?? new Album();
     }
 
-    public async Task Save(Album albums)
+    public async Task Save(Album album)
     {
-        var albumJson = new StringContent(JsonSerializer.Serialize(albums),
+        var albumJson = new StringContent(JsonSerializer.Serialize(album),
             Encoding.UTF8, "application/json");
 
-        if (albums.Id == 0)
+        if (album.Id == 0)
             await _httpClient.PostAsync("api/Albums", albumJson);
         else 
             await _httpClient.PutAsync("api/Albums", albumJson);
+    }
+
+    public async Task Update(Album album)
+    {
+        var albumJson = new StringContent(JsonSerializer.Serialize(album),
+            Encoding.UTF8, "application/json");
+
+        var response = await _httpClient.PatchAsync("api/Albums", albumJson);
+
+        if (!response.IsSuccessStatusCode)
+            throw new Exception("Error al actualizar la portada del álbum");
     }
 }

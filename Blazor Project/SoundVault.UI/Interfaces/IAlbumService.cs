@@ -7,6 +7,7 @@ namespace SoundVault.UI.Interfaces
         Task<IEnumerable<Album>> GetAll();
         Task<Album> GetById(int id);
         Task Save(Album genres);
+        Task Update(Album album);
         Task Delete(int id);
     }
 }

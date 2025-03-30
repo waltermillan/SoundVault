@@ -6,7 +6,7 @@
 
 <h3 class="text-center mb-4 text-info">Album's Catalogue</h3>
 
-@if (albums == null || !albums.Any())
+@if (albums is null || !albums.Any())
 {
     <h4 class="text-center text-warning">Loading...</h4>
 }
@@ -88,6 +88,13 @@ else
         </table>
     </EditForm>
 </div>
+
+@if (!string.IsNullOrEmpty(Message))
+{
+    <div class="alert alert-danger" role="alert">
+        @Message
+    </div>
+}
 
 @code {
 

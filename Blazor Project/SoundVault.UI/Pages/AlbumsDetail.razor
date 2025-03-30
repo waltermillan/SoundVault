@@ -32,7 +32,6 @@
                                 <tr>
                                     <th style="width: 25%;">Gender</th>
                                     <td>
-                                        <!--<input type="number" @bind="@album.GenderId" class="form-control form-control-sm" placeholder="Enter GenderId" />-->
                                         <select class="form-control form-control-sm" style="width:95%" @bind="album.GenderId">
                                             <option value="">Select a gender</option>  <!-- Default option -->
                                             @foreach (var gender in genders)
@@ -76,6 +75,13 @@
     </div>
 </div>
 
+@if (!string.IsNullOrEmpty(Message))
+{
+    <div class="alert alert-danger" role="alert">
+        @Message
+    </div>
+}
+
 @code {
     [Parameter]
     public int Id { get; set; }
@@ -93,10 +99,9 @@
                 genders = await GenderService.GetAll();
             }
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Console.WriteLine(ex.Message);
-            Message = "Error loading album.";
+            Message = e.Message;
         }
     }
 
@@ -112,9 +117,9 @@
             await AlbumService.Save(album);
             NavigationManager.NavigateTo("/AlbumsCatalogue");
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            Message = $"Error updating album: {ex.Message}";
+            Message = e.Message;
         }
     }
 }

@@ -1,0 +1,192 @@
+﻿@page "/AlbumsCover"
+@inject GenderService GenderService
+@inject AlbumService AlbumService
+
+<h3 class="text-center mb-4 text-info">Album's Cover</h3>
+
+@if (albums is null || !albums.Any())
+{
+    <p class="text-center">Loading albums...</p>
+}
+else
+{
+    <div class="container mt-3">
+        <h6 class="text-center mb-4 text-info">Álbum @(currentIndex + 1) of @albums.Count()</h6>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form class="border p-4 rounded shadow bg-light">
+                    <!-- Sección de la imagen -->
+                    <div class="text-center mb-3">
+                        @if (!string.IsNullOrEmpty(albums[currentIndex].Cover))
+                        {
+                            <img src="data:image/png;base64,@albums[currentIndex].Cover"
+                            class="img-fluid rounded shadow-sm" style="max-width: 225px; max-height: 225px;" alt="Cover Image" />
+                        }
+                        else
+                        {
+                            <img src="./images/NoCover.png"
+                            class="img-fluid rounded shadow-sm" style="max-width: 225px; max-height: 225px;" alt="Cover Image" />
+                        }
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title">Title:</label>
+                                <input id="title" @bind="albums[currentIndex].Title" class="form-control" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="songCount">Number of songs:</label>
+                                <input id="songCount" @bind="albums[currentIndex].SongCount" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="duration">Total duration:</label>
+                                <input id="duration" @bind="albums[currentIndex].TotalDuration" class="form-control" disabled />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="genre">Gender:</label>
+                                <input id="genre" @bind="albums[currentIndex].Gender.Name" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <label for="coverImage"><strong>Select cover image:</strong></label>
+                        <InputFile @ref="fileInput" OnChange="OnImageSelected" class="form-control-file mt-2" />
+
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="button" @onclick="FirstAlbum" class="btn btn-success" disabled="@IsFirstAlbum()">← First</button>
+                        <button type="button" @onclick="PreviousAlbum" class="btn btn-success" disabled="@IsFirstAlbum()">← Previous</button>
+                        <button type="button" @onclick="NextAlbum" class="btn btn-success" disabled="@IsLastAlbum()">Next →</button>
+                        <button type="button" @onclick="LastAlbum" class="btn btn-success" disabled="@IsLastAlbum()">Last →</button>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="button" @onclick="UploadImage" class="btn btn-primary btn-lg">Load Picture</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Message))
+{
+    <div class="alert alert-danger" role="alert">
+        @Message
+    </div>
+}
+
+
+@code {
+    private List<Album> albums { get; set; } = new List<Album>();
+    private int currentIndex { get; set; } = 0;
+    private string base64Cover { get; set; } 
+    public string Message { get; set; }
+    private InputFile fileInput;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            albums = (await AlbumService.GetAll()).ToList();
+        }
+        catch (Exception e)
+        {
+            Message = e.Message;
+        }
+    }
+
+    private async Task OnImageSelected(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var file = e.File;
+            if (file != null)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.OpenReadStream().CopyToAsync(memoryStream);
+                    var fileBytes = memoryStream.ToArray();
+                    base64Cover = Convert.ToBase64String(fileBytes);
+                }
+            }
+        }
+        catch (Exception exception)
+        {
+            Message = exception.Message;
+        }
+    }
+
+    private async Task UploadImage()
+    {
+        if (!string.IsNullOrEmpty(base64Cover))
+        {
+            albums[currentIndex].Cover = base64Cover;
+
+            Gender gender = await GenderService.GetById(albums[currentIndex].Gender.Id);
+
+            try
+            {
+                Album albumn = new Album
+                    {
+                        Id = albums[currentIndex].Id,
+                        Cover = base64Cover,
+                        GenderId = gender.Id,
+                        Gender = gender,
+                        SongCount = albums[currentIndex].SongCount,
+                        Title = albums[currentIndex].Title,
+                        TotalDuration = albums[currentIndex].TotalDuration
+                    };
+                await AlbumService.Update(albumn);
+
+                // Force UI update
+                StateHasChanged();
+            }
+            catch (Exception e)
+            {
+                Message = e.Message;
+            }
+        }
+    }
+
+    private void FirstAlbum()
+    {
+        currentIndex = 0;
+    }
+
+    private void PreviousAlbum()
+    {
+        if (currentIndex > 0)
+            currentIndex--;
+    }
+
+    private void NextAlbum()
+    {
+        if (currentIndex < albums.Count - 1)
+            currentIndex++;
+    }
+
+    private void LastAlbum()
+    {
+        currentIndex = albums.Count - 1;
+    }
+
+    // Methods to disable buttons if we are in the first or last album
+    private bool IsFirstAlbum() => currentIndex == 0;
+    private bool IsLastAlbum() => currentIndex == albums.Count - 1;
+}

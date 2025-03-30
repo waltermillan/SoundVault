@@ -14,14 +14,12 @@ namespace SoundVault.API.Controllers
             _albumRepository = albumRepository;
         }
 
-
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Get()
         {
             return Ok(await _albumRepository.GetAll());
         }
-
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -34,7 +32,7 @@ namespace SoundVault.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Post([FromBody] Album album)
         {
-            if (album == null)
+            if (album is null)
                 return BadRequest();
 
             if (album.Title.Trim() == string.Empty)
@@ -52,7 +50,7 @@ namespace SoundVault.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Put([FromBody] Album album)
         {
-            if (album == null)
+            if (album is null)
                 return BadRequest();
 
             if (album.Title.Trim() == string.Empty)
@@ -74,6 +72,21 @@ namespace SoundVault.API.Controllers
                 return BadRequest();
 
             await _albumRepository.Delete(id);
+
+            return NoContent();
+        }
+
+        [HttpPatch]
+        public async Task<IActionResult> UpdateCover(Album album)
+        {
+
+            if (album is null || string.IsNullOrEmpty(album.Cover))
+                return BadRequest("La portada no puede estar vacía.");
+
+            var result = await _albumRepository.Update(album);
+
+            if (!result)
+                return NotFound($"Álbum con ID {album.Id} no encontrado.");
 
             return NoContent();
         }
