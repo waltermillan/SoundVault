@@ -6,7 +6,10 @@
 
 ## 📅 Changelog
 
-- **2025-05-07**: Initial commit. Added backend architecture (Onion + patterns), frontend login module, and appointment request feature.
+<<<<<<< HEAD
+- **2025-03-31**: Initial commit. Added backend architecture (Onion + patterns), frontend login module, and appointment request feature.
+- **2025-05-09**: Added Login module. Add Artits module. Add entities: Users, Artits and nationalities.
+
 
 ---
 
