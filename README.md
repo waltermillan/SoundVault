@@ -88,6 +88,11 @@ Make sure you have the following installed:
 ### ⚙️ Setup Steps
 
 1. Clone the repository:
+    ```bash
+    git clone https://github.com/waltermillan/SoundVault.git
+    ```
 
-   ```bash
-   git clone https://github.com/waltermillan/SoundVault.git
+2. Follow the video guides for full setup:
+    - [Version 1 Display Version](https://www.youtube.com/watch?v=lrIKnnCJhSo)
+
+3. Complete the remaining setup steps as described in the project documentation.
